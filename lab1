@@ -1,8 +1,8 @@
 import random
-a0=3
-a1=4
-a2=7
-a3=3
+a0=random.randint(50, 1000)
+a1=random.randint(50, 1000)
+a2=random.randint(50, 1000)
+a3=random.randint(50, 1000)
 x1=random.sample(range(1, 20), 8)
 x2=random.sample(range(1, 20), 8)
 x3=random.sample(range(1, 20), 8)
