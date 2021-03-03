@@ -1,7 +1,8 @@
 import random as rand
 import math
 variant = 21
-m = 5
+m = 7
+
 y_max = (30 - variant) * 10
 y_min = (20 - variant) * 10
 x1_min, x1_max, x2_min, x2_max = -30, 20, -20, 40
@@ -53,11 +54,25 @@ Ruv.append(abs(teta[0] - 1) / sigmaTeta)
 Ruv.append(abs(teta[1] - 1) / sigmaTeta)
 Ruv.append(abs(teta[2] - 1) / sigmaTeta)
 
-Rkr = 2
+Rkr = 0
+if m >= 2 and m < 6:
+    Rkr = 1.73
+elif m >= 6 and m < 8:
+    Rkr = 2.16
+elif m >= 8 and m < 10:
+    Rkr = 2.43
+elif m >= 10 and m < 12:
+    Rkr = 2.62
+elif m >= 12 and m < 15:
+    Rkr = 2.75
+elif m >= 15 and m < 20:
+    Rkr = 2.9
+elif m == 20:
+    Rkr = 3.08
 
 for i in range(len(Ruv)):
     if Ruv[i] > Rkr:
-        print('Помилка, повторіть експеримент')
+            print('Помилка, повторіть експеримент')
 
 mx1 = (xn[0][0] + xn[1][0] + xn[2][0]) / 3
 mx2 = (xn[0][1] + xn[1][1] + xn[2][1]) / 3
