@@ -7,12 +7,12 @@ import kotlin.random.Random
 
 fun main() {
 
-    val x1min = -20
-    val x1max = 15
-    val x2min = -35
-    val x2max = 10
-    val x3min = 10
-    val x3max = 20
+    val x1min = -30
+    val x1max = 20
+    val x2min = -20
+    val x2max = 40
+    val x3min = -30
+    val x3max = -15
     val xAvmax: Double = (x1max + x2max + x3max) / 3.0
     val xAvmin: Double = (x1min + x2min + x3min) / 3.0
     val ymax = 200 + xAvmax.toInt()
