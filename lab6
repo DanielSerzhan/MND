@@ -17,7 +17,7 @@ x_average_max = (x1_max + x2_max + x3_max) / 3
 x_average_min = (x1_min + x2_min + x3_min) / 3
 y_max = 200 + x_average_max
 y_min = 200 + x_average_min
-
+c = 0
 
 def replace_column(list_: list, column, list_replace):
     list_ = deepcopy(list_)
@@ -58,7 +58,7 @@ def get_value(table: dict, key: int):
             return table.get(i)
 
 
-def main(m, n):
+def main(c, m, n):
     if n == 14:
         const_l = 1.73
         print(
@@ -230,7 +230,7 @@ def main(m, n):
         print(f"The variance is homogeneous: Gp = {g_p:.5} < Gt = {g_t}")
     else:
         print(f"The variance is not homogeneous Gp = {g_p:.5} > Gt = {g_t}\nStart again with m = m + 1 = {m + 1}")
-        return main(m=m + 1, n=n)
+        return main(c, m=m + 1, n=n)
 
     print("\n[ Student's test ]")
     s2_b = sum(s_i) / n
@@ -252,10 +252,12 @@ def main(m, n):
         if get_value(t_table, f_3) > t[i]:
             beta_i[i] = 0
             d -= 1
+        else:
+            c = c + 1
     if n == d:
         n = 8 if n == 4 else 14
         print(f"n=d\nStart again with n = {n} and m = {m}")
-        return main(m=m, n=n)
+        return main(c, m=m, n=n)
     if n == 14:
         print(
             f"\nThe naturalized simplified regression equation: "
@@ -323,12 +325,13 @@ def main(m, n):
             f"fp = {f_p} > ft = {get_value(f_t, f_3)[f_4]}.\n"
             f"The mathematical model is not adequate to the experimental data\n"
             f"Start again with m = {m} and n = {n}")
-        return main(m=m, n=n)
+        return main(c, m=m, n=n)
     else:
         print(
             f"fP = {f_p} < fT = {get_value(f_t, f_3)[f_4]}.\n"
             f"The mathematical model is adequate to the experimental data\n")
-
+        print("Кількість значимих коефіцієінтів ", c)
 
 # n = 14 because if you start with 4 then it will not reach 14
-main(m=2, n=14)
+for i in range (0,100):
+    main(c, m=2, n=14)
